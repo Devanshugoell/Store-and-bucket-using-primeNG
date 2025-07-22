@@ -1,0 +1,44 @@
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <span class="text-white font-bold ml-2">My App</span>
+  </ng-template>
+</p-menubar>
+
+<p-dialog
+  header="Add Store"
+  [(visible)]="showStoreForm"
+  [modal]="true"
+  [closable]="true"
+  [style]="{ width: '400px' }"
+>
+  <form (ngSubmit)="submitForm()" class="p-fluid">
+    <div class="p-field mb-3">
+      <label for="name">Store Name</label>
+      <input
+        id="name"
+        type="text"
+        pInputText
+        [(ngModel)]="storeName"
+        name="storeName"
+        required
+      />
+    </div>
+    <div class="p-field mb-3">
+      <label for="location">Location</label>
+      <input
+        id="location"
+        type="text"
+        pInputText
+        [(ngModel)]="storeLocation"
+        name="storeLocation"
+        required
+      />
+    </div>
+    <button
+      pButton
+      type="submit"
+      label="Submit"
+      class="p-button-sm mt-2"
+    ></button>
+  </form>
+</p-dialog>
