@@ -1,1 +1,47 @@
-<p>store works!</p>
+<h2>Store</h2>
+
+<div style="margin-bottom: 1rem">
+  <input
+    type="text"
+    pInputText
+    placeholder="Item name"
+    [(ngModel)]="item"
+    style="margin-right: 0.5rem"
+  />
+  <input
+    type="number"
+    pInputText
+    placeholder="Price"
+    [(ngModel)]="price"
+    style="margin-right: 0.5rem"
+  />
+  <button
+    pButton
+    label="Add Item"
+    (click)="addItem()"
+    class="p-button-success"
+  ></button>
+</div>
+
+<ul style="list-style: none; padding: 0">
+  <li
+    *ngFor="let item of storeItems; let i = index"
+    style="margin-bottom: 1rem; border: 1px solid #ccc; padding: 1rem"
+  >
+    <p><strong>Item:</strong> {{ item.item }}</p>
+    <p><strong>Price:</strong> ₹{{ item.price }}</p>
+    <button
+      pButton
+      label="Move to Bucket"
+      class="p-button-warning"
+      (click)="moveToBucket(i)"
+    ></button>
+  </li>
+</ul>
+
+<button
+  pButton
+  label="Back to Home"
+  class="p-button-secondary"
+  (click)="goHome()"
+></button>
