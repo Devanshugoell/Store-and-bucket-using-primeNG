@@ -13,35 +13,24 @@ import { ButtonModule } from "primeng/button";
 export class BucketComponent {
   bucketItems: { item: string; price: number }[] = [];
 
-  constructor(private router: Router) {}
+  constructor(public router: Router) {}
 
   ngOnInit() {
-    this.loadBucketItems();
-  }
-
-  loadBucketItems() {
     const stored = localStorage.getItem("bucketItems");
     this.bucketItems = stored ? JSON.parse(stored) : [];
   }
 
   moveToStore(index: number) {
     const itemToMove = this.bucketItems.splice(index, 1)[0];
-
-    // Update localStorage for bucket
     localStorage.setItem("bucketItems", JSON.stringify(this.bucketItems));
 
-    // Optional: move back to store (you can manage this separately)
-    const storeItems = JSON.parse(localStorage.getItem("storeItems") || "[]");
-    storeItems.push(itemToMove);
-    localStorage.setItem("storeItems", JSON.stringify(storeItems));
+    const store = JSON.parse(localStorage.getItem("storeItems") || "[]");
+    store.push(itemToMove);
+    localStorage.setItem("storeItems", JSON.stringify(store));
   }
 
-  clearBucket() {
-    localStorage.removeItem("bucketItems");
-    this.bucketItems = [];
-  }
-
-  goToStore() {
-    this.router.navigate(["/store"]);
+  removeItem(index: number) {
+    this.bucketItems.splice(index, 1);
+    localStorage.setItem("bucketItems", JSON.stringify(this.bucketItems));
   }
 }

@@ -34,7 +34,14 @@
       pButton
       label="Move to Bucket"
       class="p-button-warning"
+      style="margin-right: 0.5rem"
       (click)="moveToBucket(i)"
+    ></button>
+    <button
+      pButton
+      label="Remove"
+      class="p-button-danger"
+      (click)="removeItem(i)"
     ></button>
   </li>
 </ul>

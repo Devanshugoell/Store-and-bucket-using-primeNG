@@ -1,10 +1,6 @@
 <h2>Bucket</h2>
 
-<div *ngIf="bucketItems.length === 0">
-  <p>No items in the bucket.</p>
-</div>
-
-<ul *ngIf="bucketItems.length > 0" style="list-style: none; padding: 0">
+<ul style="list-style: none; padding: 0">
   <li
     *ngFor="let item of bucketItems; let i = index"
     style="margin-bottom: 1rem; border: 1px solid #ccc; padding: 1rem"
@@ -13,29 +9,23 @@
     <p><strong>Price:</strong> ₹{{ item.price }}</p>
     <button
       pButton
-      type="button"
-      label="Move back to Store"
-      class="p-button-outlined p-button-secondary"
+      label="Move to Store"
+      class="p-button-success"
+      style="margin-right: 0.5rem"
       (click)="moveToStore(i)"
+    ></button>
+    <button
+      pButton
+      label="Remove"
+      class="p-button-danger"
+      (click)="removeItem(i)"
     ></button>
   </li>
 </ul>
 
 <button
-  *ngIf="bucketItems.length > 0"
   pButton
-  type="button"
-  label="Clear Bucket"
-  class="p-button-danger mt-3"
-  (click)="clearBucket()"
+  label="Back to Store"
+  class="p-button-secondary"
+  (click)="router.navigate(['/store'])"
 ></button>
-
-<div style="margin-top: 2rem">
-  <button
-    pButton
-    type="button"
-    label="Go to Store"
-    class="p-button-primary"
-    (click)="goToStore()"
-  ></button>
-</div>

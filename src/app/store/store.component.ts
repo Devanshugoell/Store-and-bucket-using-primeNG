@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -32,25 +32,24 @@ export class StoreComponent {
     if (!this.item || this.price === null) return;
 
     const newItem = { item: this.item, price: this.price };
-
     this.storeItems.push(newItem);
     localStorage.setItem("storeItems", JSON.stringify(this.storeItems));
-
-    // Reset inputs
     this.item = "";
     this.price = null;
   }
 
   moveToBucket(index: number) {
     const itemToMove = this.storeItems.splice(index, 1)[0];
-
-    // Update storeItems in localStorage
     localStorage.setItem("storeItems", JSON.stringify(this.storeItems));
 
-    // Update bucketItems in localStorage
     const bucket = JSON.parse(localStorage.getItem("bucketItems") || "[]");
     bucket.push(itemToMove);
     localStorage.setItem("bucketItems", JSON.stringify(bucket));
+  }
+
+  removeItem(index: number) {
+    this.storeItems.splice(index, 1);
+    localStorage.setItem("storeItems", JSON.stringify(this.storeItems));
   }
 
   goHome() {
