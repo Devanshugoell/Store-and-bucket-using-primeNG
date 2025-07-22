@@ -1,0 +1,13 @@
+.container {
+  list-style: none;
+  padding: 0;
+}
+
+.moveToStore {
+  margin-right: 0.5rem;
+}
+.display {
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+}

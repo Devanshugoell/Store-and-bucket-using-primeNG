@@ -1,6 +1,15 @@
-.field {
-  margin-bottom: 1rem;
+.container {
+  list-style: none;
+  padding: 0;
 }
-.form {
-  max-width: fit-content;
+.input {
+  margin-right: 0.5rem;
+}
+.display {
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+.moveToBucket {
+  margin-right: 0.5rem;
 }

@@ -6,14 +6,14 @@
     pInputText
     placeholder="Item name"
     [(ngModel)]="item"
-    style="margin-right: 0.5rem"
+    class="input"
   />
   <input
     type="number"
     pInputText
     placeholder="Price"
     [(ngModel)]="price"
-    style="margin-right: 0.5rem"
+    class="input"
   />
   <button
     pButton
@@ -23,18 +23,15 @@
   ></button>
 </div>
 
-<ul style="list-style: none; padding: 0">
-  <li
-    *ngFor="let item of storeItems; let i = index"
-    style="margin-bottom: 1rem; border: 1px solid #ccc; padding: 1rem"
-  >
+<ul class="container">
+  <li *ngFor="let item of storeItems; let i = index" class="display">
     <p><strong>Item:</strong> {{ item.item }}</p>
     <p><strong>Price:</strong> ₹{{ item.price }}</p>
     <button
       pButton
       label="Move to Bucket"
       class="p-button-warning"
-      style="margin-right: 0.5rem"
+      [classList]="moveToBucket"
       (click)="moveToBucket(i)"
     ></button>
     <button

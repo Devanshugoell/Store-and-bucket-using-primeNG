@@ -1,17 +1,13 @@
 <h2>Bucket</h2>
 
-<ul style="list-style: none; padding: 0">
-  <li
-    *ngFor="let item of bucketItems; let i = index"
-    style="margin-bottom: 1rem; border: 1px solid #ccc; padding: 1rem"
-  >
+<ul class="container">
+  <li *ngFor="let item of bucketItems; let i = index" class="display">
     <p><strong>Item:</strong> {{ item.item }}</p>
     <p><strong>Price:</strong> ₹{{ item.price }}</p>
     <button
       pButton
       label="Move to Store"
-      class="p-button-success"
-      style="margin-right: 0.5rem"
+      class="p-button-success moveToStore"
       (click)="moveToStore(i)"
     ></button>
     <button
